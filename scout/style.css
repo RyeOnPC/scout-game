@@ -1,0 +1,165 @@
+body {
+  background-color: #333;
+  background-image: linear-gradient(to top, #111 0%, #222 100%);
+  background-attachment: scroll;
+  font-family: oswald;
+  font-size: 100%;;
+}
+.title {
+  margin: auto;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+/* Title Properties */
+h1 {
+  padding-top: 42vh;
+  font-size: 32pt;
+  color: #fff;
+}
+.tagline {
+  font-size: 16pt;
+  color: #333;
+}
+/* Game Properties */
+.game {
+  min-height: 90vh;
+  margin: 2.5%;
+  background-image: linear-gradient(to top, #ccc 0%, #eee 100%);
+  background-attachment: scroll;
+  box-shadow: 0 .3rem .75rem #000;
+  border-radius: 7px;
+}
+/* Targets */
+.range {
+  width: 60%;
+  padding: 7.5vh 20% 7.5vh 20%;
+  display: flex;
+  cursor:none;
+  justify-content:center;
+}
+.targets {
+  max-width: 20%;
+  max-height: 25vh;
+  padding: auto;
+  display: inline-block;
+}
+.civ {
+}
+/* Scoreboard */
+.scoreboard {
+  width: 100%;
+  text-align: center;
+}
+.playerscore {
+  max-width: 400px;
+  width: 30%;
+  display: inline-block;
+  background-image: linear-gradient(
+    to top left,
+    rgb(22, 52, 87) 0%,
+    rgb(80, 107, 148) 100%
+  );
+  height: auto;
+  min-height: 130px;
+  margin: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+.activeplayer {
+  background-image: linear-gradient(
+    to top left,
+    rgb(25, 133, 255) 0%,
+    rgb(129, 198, 255) 100%
+  );
+  color: rgba(255, 255, 255, 1);
+}
+.playerlabel {
+  display: inline-block;
+  padding: auto;
+  line-height: 40%;
+  font-size: 2rem;
+  padding-bottom: 35px;
+}
+.score {
+  display: inline-block;
+  width: 100%;
+  font-size: 5rem;
+}
+
+/* Message */
+
+.message {
+    width: auto;
+    text-align: center;
+    color: #fff;
+    font-size: 1.7em;
+    padding: 5.5vh 0 11.5vh 0;
+    justify-content: space-evenly;
+}
+
+.hit {
+  display: inline-block;
+  min-width: 15%;
+  max-width: 300px;
+  border-radius: 4px;
+  padding: 30px 20px;
+  margin: 8px;
+}
+
+.civ-msg{
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(211, 72, 67) 0%,
+    rgb(155, 22, 33) 100%
+  );
+}
+.tango-msg {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(137, 211, 67) 0%,
+    rgb(64, 155, 22) 100%
+  );
+}
+.start-msg {
+    color: #fff;
+  background-color: #666;
+}
+.win-msg {
+  color: #fff;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(185, 168, 12) 0%,
+    rgb(146, 108, 3) 100%
+  );
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.hidden {
+  display: none !important;
+}
+.invisible {
+  opacity: 0;
+}
+.newgame {
+  display: inline-block;
+  width: 10%;
+  min-width: 120px;
+  max-width: 200px;
+  border-radius: 4px;
+  padding: 25px;
+  margin-top: 35px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(67, 211, 192) 0%,
+    rgb(22, 146, 155) 100%
+  );
+  box-shadow: 0 .6rem 1rem rgba(0,0,0, 0.3);
+  transition: .25s ease;
+}
+.newgame:active {
+  box-shadow: 0 .3rem .75rem rgba(0,0,0, 0.6);
+  transition: .25s ease;
+  transform: translate(0,10px);
+}

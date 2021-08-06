@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>scout | puzzle game</title>
+    <link type="text/css" rel="stylesheet" href="reset.css" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Oswald:300,400|Stint+Ultra+Condensed"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="title">
+      <h1>scout.</h1>
+      <span class="tagline">a puzzle shooter</span>
+    </div>
+
+    <div class="game">
+        <div class="range">
+            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target0"/>
+            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target1"/>
+            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target2"/>
+            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target3"/>
+            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target4"/>
+        </div>
+
+        <div class="scoreboard">
+            <div class="playerscore" id="player1">
+                <span class="score" id="score0">0</span>
+                <span class="playerlabel">PLAYER 1</span>
+            </div>
+            <div class="playerscore activeplayer" id="player2">
+                <span class="score" id="score1">0</span>
+                <span class="playerlabel">PLAYER 2</span>
+            </div>
+        </div>
+
+        <div class="message">
+            <span class="hit start-msg invisible">PLAYER 1 - SHOOT A TARGET</span>
+            <span class="hit civ-msg hidden">CIVILIAN</span>
+            <span class="hit tango-msg hidden">TANGO</span>
+            <span class="hit win-msg hidden">WINNER</span><br>
+            <span class="newgame" id="startgame">START</span>
+            <span class="newgame hidden" id="newgame">NEW GAME</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
