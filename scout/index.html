@@ -11,29 +11,53 @@
     />
   </head>
   <body>
-    <div class="title">
-      <h1>scout.</h1>
-      <span class="tagline">a puzzle shooter</span>
+    <div class="overlay"></div>
+    <div class="instructions">
+      <h2>INSTRUCTIONS</h2>
+      <div id="instruct-content">
+        <p>
+      THE IDEA OF THE GAME IS KIND OF LIKE RUSSIAN ROULETTE. ONE OF THE RANDOMLY ASSIGNED HIDDEN TARGETS IS A 'CIVILIAN' WHILE THE OTHER FOUR ARE TANGOS YOU MUST ELIMINATE. ELIMINATE AS MANY TANGOS AS YOU CAN WITHOUT HITTING A CIVILIAN.<br><br>
+      IF YOU HIT A CIVILIAN, YOUR SCORE IS RESET TO ZERO.<BR>
+      CLICK BEGIN, AND YOU WILL BE PROMPTED TO ENTER A NUMBER.<br><br>
+      THE FIRST PLAYER TO REACH THE DESIGNATED NUMBER WINS!
+    </p>
+      </div>
+      <div id="close-inst"></div>
+      <img src="close.png" onmousedown="this.src='close-active.png'" onmouseup="this.src='close.png'" id="close-button">
+      <div id="gotit">GOT IT</div>
     </div>
 
+    <div class="title">
+      <h1>scout.</h1>
+      <span class="tagline">a puzzle shooter</span><br>
+      <button class="tagline" id="instruct-button">[ click here for instructions ]</button>
+    </div>
     <div class="game">
         <div class="range">
-            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target0"/>
-            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target1"/>
-            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target2"/>
-            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target3"/>
-            <img src="target.png" onmouseover="this.src='targetaim.png'" onmouseout="this.src='target.png'" class="targets" id="target4"/>
+            <img src="target.png" class="targets" id="target0"/>
+            <img src="target.png" class="targets" id="target1"/>
+            <img src="target.png" class="targets" id="target2"/>
+            <img src="target.png" class="targets" id="target3"/>
+            <img src="target.png" class="targets" id="target4"/>
         </div>
-
+        
         <div class="scoreboard">
             <div class="playerscore" id="player1">
-                <span class="score" id="score0">0</span>
-                <span class="playerlabel">PLAYER 1</span>
-            </div>
+              <div id="civP1">
+                </div>
+                <div id="tangoP1">
+              </div>
+              <span class="score" id="score0">0</span>
+              <span class="playerlabel">PLAYER 1</span>
+        </div>
             <div class="playerscore activeplayer" id="player2">
-                <span class="score" id="score1">0</span>
-                <span class="playerlabel">PLAYER 2</span>
-            </div>
+              <div id="civP2">
+                </div>
+                <div id="tangoP2">
+              </div>
+              <span class="score" id="score1">0</span>
+              <span class="playerlabel">PLAYER 2</span>
+          </div>
         </div>
 
         <div class="message">

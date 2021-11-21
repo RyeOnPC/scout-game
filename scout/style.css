@@ -3,7 +3,6 @@ body {
   background-image: linear-gradient(to top, #111 0%, #222 100%);
   background-attachment: scroll;
   font-family: oswald;
-  font-size: 100%;;
 }
 .title {
   margin: auto;
@@ -21,7 +20,99 @@ h1 {
   font-size: 16pt;
   color: #333;
 }
+#instruct-button {
+  font-size: 12pt;
+  font-family: oswald;
+  color: #363636;
+  text-decoration: none;
+  display:inline-block;
+  background-color: rgba(0, 0, 0, 0);
+  border: #000 solid 0px;
+  cursor: pointer;
+}
+.instructions {
+  position: fixed;
+  background-color: #fff;
+  left: 50%;
+  margin-left:-25%;
+  min-width: 400px;
+  min-height: 450px;
+  width: 50%;
+  top:2%;
+  margin-top: 2%;
+  bottom:2%;
+  margin-bottom: 2%;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 .3rem .75rem rgba(0,0,1, 0.6);
+  font-size: 100%;
+  display: inline-block;
+  z-index: 10;
+}
+.overlay {
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 9;
+}
+
+#instruct-content {
+  position:absolute;
+  top: 15%;
+  left: 5%;
+  width: 90%;
+  min-width: 200px;
+  bottom: 25%;
+  color: #2a2a2a;
+  z-index: 10;
+  text-align: center;
+  padding: auto;
+  margin: auto;
+}
+#instruct-content>p {
+  min-width: 200px;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: inline-block;
+}
+h2 {
+  position:absolute;
+  top: 5%;
+  font-size: 36pt;
+  color: #000;
+  width:100%;
+  left: 0;
+  z-index: 10;
+  text-align: center;
+}
+
+#close-button {
+  position:absolute;
+  cursor: pointer;
+  top: 10px;
+  right: 10px;
+}
+#gotit {
+  color: #fff;
+  font-size: 2vw;
+  position: absolute;
+  background-image: linear-gradient(to bottom, rgb(255, 85, 85) 0%, rgb(214, 55, 55) 100%);
+  bottom: 2%;
+  border-radius: 4px;
+  padding: 15px 0 15px 0;
+  width: 14%;
+  margin-left: 43%;
+  cursor: pointer;
+}
+
 /* Game Properties */
+
 .game {
   min-height: 90vh;
   margin: 2.5%;
@@ -35,26 +126,32 @@ h1 {
   width: 60%;
   padding: 7.5vh 20% 7.5vh 20%;
   display: flex;
-  cursor:none;
+  cursor:default;
   justify-content:center;
 }
 .targets {
   max-width: 20%;
   max-height: 25vh;
+  min-width: 80px;
+  min-height: 80px;
   padding: auto;
   display: inline-block;
 }
 .civ {
 }
+
 /* Scoreboard */
+
 .scoreboard {
   width: 100%;
   text-align: center;
 }
 .playerscore {
+  min-width: 200px;
   max-width: 400px;
   width: 30%;
   display: inline-block;
+  position:relative;
   background-image: linear-gradient(
     to top left,
     rgb(22, 52, 87) 0%,
@@ -65,6 +162,8 @@ h1 {
   margin: 9px;
   color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
+  opacity: 1;
+  z-index: 2;
 }
 .activeplayer {
   background-image: linear-gradient(
@@ -74,17 +173,55 @@ h1 {
   );
   color: rgba(255, 255, 255, 1);
 }
+.winnerplayer {
+  background-image: linear-gradient(
+    rgb(255, 241, 111) 0%,
+    rgb(230, 213, 63) 100%
+  );
+  color: rgba(255, 255, 255, 1);
+  -webkit-animation: glow 1500ms ease-in-out infinite alternate;
+  -moz-animation: glow 1500ms ease-in-out infinite alternate;
+  animation: glow 1500ms ease-in-out infinite alternate;
+  text-shadow: 0 0 8px #ffffff;
+}
+
+@-webkit-keyframes glow {
+  from {
+    box-shadow: 0 0 7px #fff, 0 0 14px #fff, 0 0 21px #f0de3d, 0 0 28px #f0de3d, 0 0 35px #f0de3d, 0 0 42px #f0de3d, 0 0 49px #f0de3d;
+  }
+  to {
+    box-shadow: 0 0 14px #fff, 0 0 21px #fffeae, 0 0 28px #fffeae, 0 0 35px #fffeae, 0 0 42px #fffeae, 0 0 49px #fffeae, 0 0 56px #fffeae;
+  }
+}
 .playerlabel {
   display: inline-block;
   padding: auto;
   line-height: 40%;
   font-size: 2rem;
   padding-bottom: 35px;
+  opacity: 1;
+  z-index: 2;
 }
 .score {
   display: inline-block;
   width: 100%;
   font-size: 5rem;
+}
+
+#civP1, #civP2, #tangoP1, #tangoP2 {
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 4px;
+  opacity: 0;
+  position: absolute;
+}
+#civP1, #civP2 {
+  background-color: rgba(200,30,30);
+  z-index: 1;
+}
+#tangoP1, #tangoP2 {
+  background-color: rgb(30,200,30);
+  z-index: 1;
 }
 
 /* Message */

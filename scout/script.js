@@ -2,6 +2,12 @@
 
 // Defining variables
 
+let instructBtn = document.querySelector('#instruct-button');
+let instructEl = document.querySelector('.instructions');
+let overlayEl = document.querySelector('.overlay');
+let closeBtn = document.querySelector('#close-button');
+let gotItBtn = document.querySelector('#gotit');
+
 let activePlayer;
 let userInput, maxScore;
 
@@ -20,6 +26,7 @@ let civMsg = document.querySelector('.civ-msg');
 let winMsg = document.querySelector('.win-msg');
 let newGameBtn = document.querySelector('#newgame');
 let startBtn = document.querySelector('#startgame');
+let range = document.querySelector('.range');
 
 let scorePlayer1 = 0;
 let scorePlayer2 = 0;
@@ -28,6 +35,22 @@ let scorePlayer2El = document.querySelector('#score1');
 let player0active = document.querySelector('#player1');
 let player1active = document.querySelector('#player2');
 let scores = [scorePlayer1,scorePlayer2];
+
+// Instructions
+
+const openInstruct = function () {
+    instructEl.classList.remove('hidden');
+    overlayEl.classList.remove('hidden');
+}
+
+const closeInstruct = function () {
+    instructEl.classList.add('hidden');
+    overlayEl.classList.add('hidden');
+}
+
+instructBtn.addEventListener('click', openInstruct);
+closeBtn.addEventListener('click', closeInstruct);
+gotItBtn.addEventListener('click', closeInstruct);
 
 // All functions
 
@@ -48,6 +71,9 @@ const shuffleTargets = function () {
             targets[x].classList.remove('civ','invisible');
             targets[x].classList.add('civ');
             }
+        targets[x].setAttribute("onmouseover", "this.src='targetaim.png'");
+        targets[x].setAttribute("onmouseout", "this.src='target.png'");
+        targets[x].src = "target.png";
     }
     // console.log(targets); // Creates a visual log to show the list of targets
 }
@@ -63,6 +89,9 @@ const newGame = function () {
     activePlayer = 0;
     player0active.classList.add('activeplayer');
     player1active.classList.remove('activeplayer');
+    range.setAttribute("style", "cursor: none;");
+    player0active.classList.remove('winnerplayer');
+    player1active.classList.remove('winnerplayer');
     // Hide/show messages aka 'hit'
     civMsg.classList.add('hidden');
     tangoMsg.classList.add('hidden');
@@ -80,6 +109,7 @@ const hideStart = function () {
 }
 const civShoot = function() {
     if (playing) {
+        fadeOutCiv();
         hideStart();
         civMsg.classList.remove('hidden');
         tangoMsg.classList.add('hidden');
@@ -91,16 +121,20 @@ const civShoot = function() {
 };
 const tangoShoot = function () {
     if (playing) {
+        fadeOutTango();
         hideStart();
+        tangoMsg.textContent = `PLAYER ${Number(activePlayer)+1} SHOT A TANGO`;
         playerScoreUp();
-        this.classList.add('invisible');
+        this.setAttribute("src", "target-tango.png");
+        this.setAttribute("onmouseover", "");
+        this.setAttribute("onmouseout", "");
+        // this.classList.add('invisible');
         this.removeEventListener('click', tangoShoot);
         // Show tango message and hide civ message
     }
     if (playing) {
         civMsg.classList.add('hidden');
         tangoMsg.classList.remove('hidden');
-        tangoMsg.textContent = `PLAYER ${Number(activePlayer)+1} SHOT A TANGO`;
         // Additional functions
     }
 }
@@ -148,5 +182,41 @@ const winGame = function () {
     tangoMsg.classList.add('hidden');
     winMsg.classList.remove('hidden');
     winMsg.textContent = `PLAYER ${Number(activePlayer)+1} WINS`;
+    player0active.classList.remove('activeplayer');
+    player1active.classList.remove('activeplayer');
+    range.setAttribute("style", "cursor: default;");
+    activePlayer === 0 ? player0active.classList.toggle('winnerplayer') : player1active.classList.toggle('winnerplayer');
     playing = 0;
+    for (let x = 0; x < targets.length; x++) {
+        targets[x].setAttribute("onmouseover", "");
+        targets[x].setAttribute("onmouseout", "");
+    }
+}
+
+function fadeOutTango() {
+    let tangoFade = document.getElementById(`tangoP${Number(activePlayer + 1)}`);
+    let opacity = 1;
+    tangoFade.style.opacity = "1";
+    let timer = setInterval(function() {
+        if(tangoFade.style.opacity < 0.1) {
+            clearInterval(timer);
+            tangoFade.style.opacity = "1";
+        }
+        tangoFade.style.opacity = opacity;
+        opacity -= 0.05;
+    }, 30);
+}
+
+function fadeOutCiv() {
+    let civFade = document.getElementById(`civP${Number(activePlayer + 1)}`);
+    let opacity = 1;
+    civFade.style.opacity = "1";
+    let timer = setInterval(function() {
+        if(civFade.style.opacity < 0.1) {
+            clearInterval(timer);
+            civFade.style.opacity = "1";
+        }
+        civFade.style.opacity = opacity;
+        opacity -= 0.05;
+    }, 30);
 }
