@@ -9,7 +9,7 @@ let closeBtn = document.querySelector('#close-button');
 let gotItBtn = document.querySelector('#gotit');
 
 let activePlayer;
-let userInput, maxScore;
+let userInput, maxScore, userNumber;
 
 let civNumber; // Random number
 let playing = false;
@@ -79,8 +79,16 @@ const shuffleTargets = function () {
 }
 
 const newGame = function () {
-    userInput = prompt("Set the Winning Score", "");
-    maxScore = Number(userInput);
+    userInput = function () {
+        let x = prompt("Set the Winning Score, between 1 & 10.", "");
+        if (x !=null && x > 1 && x < 10) {
+            maxScore = Number(x);
+        } else {
+            alert("You must enter a digit between 1 and 10. Try again.", "");
+            userInput();
+        }
+    }
+    userInput();
     playing = true; 
     scorePlayer1 = 0;
     scorePlayer2 = 0;
